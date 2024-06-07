@@ -8,5 +8,53 @@
 <ul>
     <li th:each="item : ${items}" th:text="${item}">Placeholder for item</li>
 </ul>
+
+<!-- Demonstrating additional Thymeleaf expressions -->
+<h2>Thymeleaf Expressions Demo</h2>
+
+<!-- Variable Expressions -->
+<p th:text="${message}">Variable Expression</p>
+
+<!-- Selection Variable Expressions -->
+<ul th:object="${items}">
+    <li th:each="item : ${#this}" th:text="${item}">Selection Variable</li>
+</ul>
+
+<!-- Message Expressions -->
+<p th:text="#{home.welcome}">Message Expression</p>
+
+<!-- Link URLs -->
+<a th:href="@{/demo}">Link to Demo</a>
+
+<!-- Fragment inclusion -->
+<div th:replace="fragments/footer :: footer"></div>
+
+<!-- Conditional expressions -->
+<p th:if="${isVisible}">This is visible</p>
+<p th:unless="${!isVisible}">This is not visible</p>
+
+<!-- Switch Case expressions -->
+<div th:switch="${number}">
+    <p th:case="0">Number is zero</p>
+    <p th:case="123">Number is 123</p>
+    <p th:case="*">Number is something else</p>
+</div>
+
+<!-- Iteration over maps -->
+<ul>
+    <li th:each="entry : ${map}">
+        <span th:text="${entry.key}">Key</span>: <span th:text="${entry.value}">Value</span>
+    </li>
+</ul>
+
+<!-- Inline expressions -->
+<p th:inline="text">This is an [[${message}]] example.</p>
+
+<!-- URL Expressions -->
+<a th:href="${url}" target="_blank">Visit Example</a>
+
+<!-- Date Formatting -->
+<p th:text="${#dates.format(date, 'dd-MM-yyyy HH:mm')}">Formatted Date</p>
+
 </body>
 </html>
